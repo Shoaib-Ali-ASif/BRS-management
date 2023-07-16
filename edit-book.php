@@ -11,6 +11,7 @@ $book = $result->fetch_assoc();
 
 $title = $book['title'];
 $author = $book['author'];
+$description = $book['description'];
 
 if (isset($_POST['submit'])) {
     $title = htmlspecialchars($_POST['title']);
@@ -21,7 +22,7 @@ if (isset($_POST['submit'])) {
     } elseif (empty($author)) {
         $error = "Enter author name!";
     } else {
-        $sql = "UPDATE `books` SET `title` = '$title', `author` = '$author' WHERE `id` = $id";
+        $sql = "UPDATE `books` SET `title` = '$title', `author` = '$author', `description` = `$description` WHERE `id` = $id";
         if ($conn->query($sql)) {
             $success = "SuccessFully updated!";
         } else {
