@@ -20,7 +20,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h5 class="card-title mb-0">Own Content</h5>
+                  <h5 class="card-title mb-0">No Content Here.</h5>
                 </div>
                 <div class="card-body"></div>
               </div>
