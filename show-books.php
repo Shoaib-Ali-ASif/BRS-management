@@ -19,7 +19,7 @@
                             <h1 class="h1 mb-3">Books</h1>
                         </div>
                         <div class="col-6 text-end">
-                            <a href="./add-book.php" class="btn btn-outline-primary">Add Book</a>
+                            <a href="./add-book.php" class="btn btn-outline-primary">Add New Book</a>
                         </div>
                     </div>
                     <div class="row">
@@ -43,9 +43,9 @@
                                                 <td>Hello</td>
                                                 <td>Me</td>
                                                 <td>
-                                                    <a href="" class="btn btn-secondary">Read-More</a>
-                                                    <a href="" class="btn btn-primary">Edit</a>
-                                                    <a href="" class="btn btn-danger">Delete</a>
+                                                    <a href="./read-more.php" class="btn btn-secondary">Read-More</a>
+                                                    <a href="./edit-book.php" class="btn btn-primary">Edit</a>
+                                                    <a href="./delete-book.php" class="btn btn-danger">Delete</a>
                                                 </td>
                                             </tr>
 
