@@ -1,3 +1,32 @@
+<?php require_once('./database/connection.php') ?>
+<?php
+$error = $id = $name = $author = $description = "";
+
+if (isset($_POST['submit'])) {
+    $title = htmlspecialchars($_POST['title']);
+    $author = htmlspecialchars($_POST['author']);
+    $description = htmlspecialchars($_POST['description']);
+
+
+
+    if (empty($title)) {
+        $error = "Enter Book title!";
+    } elseif (empty($author)) {
+        $error = "Enter author name!";}
+        elseif (empty($description)) {
+            $error = "Enter book description!";
+    } else { {
+            $sql = "INSERT INTO `courses`(`title`, `author`, `description`) VALUES ('$title','$author','$description')";
+            $is_created = $conn->query($sql);
+            if ($is_created) {
+                $success = 'SuccessFully Added!';
+            } else {
+                $error = 'failed!';
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +51,8 @@
                             <a href="./show-books.php" class="btn btn-outline-primary">Back</a>
                         </div>
                     </div>
+                    <?php require_once('./includes/alerts.php'); ?>
+                    
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data" class="mx-5">
 
                         <div class="mb-3">

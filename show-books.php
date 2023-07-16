@@ -42,6 +42,7 @@ $books = $result->fetch_all(MYSQLI_ASSOC);
                                             <thead>
                                                 <tr>
                                                     <th>Sr. No.</th>
+                                                    <th>Image</th>
                                                     <th>Title</th>
                                                     <th>Author</th>
                                                     <th>Action</th>
@@ -54,6 +55,7 @@ $books = $result->fetch_all(MYSQLI_ASSOC);
 
                                                     <tr>
                                                         <td><?php echo $sr++; ?></td>
+                                                        <td><?php echo $book['img']; ?></td>
                                                         <td><?php echo $book['title']; ?></td>
                                                         <td><?php echo $book['author']; ?></td>
 
