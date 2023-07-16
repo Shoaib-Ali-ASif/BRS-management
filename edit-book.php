@@ -9,19 +9,19 @@ $sql = "SELECT * FROM `books` WHERE `books`.`id` = $id";
 $result = $conn->query($sql);
 $book = $result->fetch_assoc();
 
-$name = $book['name'];
-$duration = $book['duration'];
+$title = $book['title'];
+$author = $book['author'];
 
 if (isset($_POST['submit'])) {
-    $name = htmlspecialchars($_POST['name']);
-    $duration = htmlspecialchars($_POST['duration']);
+    $title = htmlspecialchars($_POST['title']);
+    $author = htmlspecialchars($_POST['author']);
 
-    if (empty($name)) {
-        $error = "Enter book name!";
-    } elseif (empty($duration)) {
-        $error = "Enter book duration!";
+    if (empty($title)) {
+        $error = "Enter Book title!";
+    } elseif (empty($author)) {
+        $error = "Enter author name!";
     } else {
-        $sql = "UPDATE `books` SET `name` = '$name', `duration` = '$duration' WHERE `id` = $id";
+        $sql = "UPDATE `books` SET `title` = '$title', `author` = '$author' WHERE `id` = $id";
         if ($conn->query($sql)) {
             $success = "SuccessFully updated!";
         } else {
