@@ -16,11 +16,15 @@ $description = $book['description'];
 if (isset($_POST['submit'])) {
     $title = htmlspecialchars($_POST['title']);
     $author = htmlspecialchars($_POST['author']);
+    $description = htmlspecialchars($_POST['description']);
 
     if (empty($title)) {
         $error = "Enter Book title!";
     } elseif (empty($author)) {
         $error = "Enter author name!";
+    } 
+    elseif (empty($description)) {
+        $error = "Enter description!";
     } else {
         $sql = "UPDATE `books` SET `title` = '$title', `author` = '$author', `description` = `$description` WHERE `id` = $id";
         if ($conn->query($sql)) {
@@ -68,7 +72,7 @@ if (isset($_POST['submit'])) {
                         </div>
 
                         <div class="mb-3">
-                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Book Description"></textarea>
+                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Book Description" value="<?php echo $description; ?>" ></textarea>
                         </div>
 
                         <div class="mb-3">
