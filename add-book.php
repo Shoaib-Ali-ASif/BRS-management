@@ -1,22 +1,23 @@
 <?php require_once('./database/connection.php') ?>
 <?php
-$error = $id = $name = $author = $description = "";
+
+$error = $id = $title = $image  = $description = $author = "";
 
 if (isset($_POST['submit'])) {
+    $id = htmlspecialchars($_POST['id']);
+    $image = htmlspecialchars($_POST['img']);
     $title = htmlspecialchars($_POST['title']);
-    $author = htmlspecialchars($_POST['author']);
     $description = htmlspecialchars($_POST['description']);
-
-
+    $author = htmlspecialchars($_POST['author']);
 
     if (empty($title)) {
         $error = "Enter Book title!";
     } elseif (empty($author)) {
-        $error = "Enter author name!";}
-        elseif (empty($description)) {
-            $error = "Enter book description!";
+        $error = "Enter author name!";
+    } elseif (empty($description)) {
+        $error = "Enter book description!";
     } else { {
-            $sql = "INSERT INTO `courses`(`title`, `author`, `description`) VALUES ('$title','$author','$description')";
+            $sql = "INSERT INTO `books`(`id`, `title`, `description`, `author`, `img`) VALUES ('$id','$title','$description','$author','$image')";
             $is_created = $conn->query($sql);
             if ($is_created) {
                 $success = 'SuccessFully Added!';
@@ -52,15 +53,15 @@ if (isset($_POST['submit'])) {
                         </div>
                     </div>
                     <?php require_once('./includes/alerts.php'); ?>
-                    
+
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data" class="mx-5">
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="title" id="title" placeholder="Book Title:" value="">
+                            <input type="text" class="form-control" name="title" id="title" placeholder="Book Title:" value="<?php echo $title; ?>">
                         </div>
 
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Author Name:" value="">
+                            <input type="text" class="form-control" name="author" id="author" placeholder="Author Name:" value="<?php echo $author; ?>">
                         </div>
 
                         <div class="mb-3">
@@ -68,7 +69,7 @@ if (isset($_POST['submit'])) {
                         </div>
 
                         <div class="mb-3">
-                            <input type="file" name="file" id="file" placeholder="Book image">
+                            <input type="file" name="img" id="img" placeholder="Book image">
                         </div>
 
                         <div>
