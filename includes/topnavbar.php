@@ -6,7 +6,7 @@
         <ul class="navbar-nav navbar-align">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                    <span class="text-dark">Admin</span>
+                    <span class="text-dark">Shoaib</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="./logout.php">Log out</a>
