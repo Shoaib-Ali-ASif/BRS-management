@@ -1,3 +1,13 @@
+<?php require_once('./database/connection.php') ?>
+
+
+<?php
+$sql = "SELECT * FROM `books`";
+$result = $conn->query($sql);
+$books = $result->fetch_all(MYSQLI_ASSOC);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,31 +37,43 @@
                             <div class="card">
                                 <div class="card-body">
                                     <table class="table table-bordered">
+                                        <?php
+                                        if (count($books) > 0) { ?>
+                                            <thead>
+                                                <tr>
+                                                    <th>Sr. No.</th>
+                                                    <th>Title</th>
+                                                    <th>Author</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $sr = 1;
+                                                foreach ($books as $book) { ?>
 
-                                        <thead>
-                                            <tr>
-                                                <th>Sr. No.</th>
-                                                <th>Title</th>
-                                                <th>Author</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                                    <tr>
+                                                        <td><?php echo $sr++; ?></td>
+                                                        <td><?php echo $book['title']; ?></td>
+                                                        <td><?php echo $book['author']; ?></td>
 
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Hello</td>
-                                                <td>Me</td>
-                                                <td>
-                                                    <a href="./read-more.php" class="btn btn-secondary">Read-More</a>
-                                                    <a href="./edit-book.php" class="btn btn-primary">Edit</a>
-                                                    <a href="./delete-book.php" class="btn btn-danger">Delete</a>
-                                                </td>
-                                            </tr>
+                                                        <td>
+                                                            <a href="./read-more.php" class="btn btn-secondary">Read-More</a>
+                                                            <a href="./edit-book.php" class="btn btn-primary">Edit</a>
+                                                            <a href="./delete-book.php" class="btn btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                <?php
+                                                }
+                                                ?>
 
-                                        </tbody>
-
-
+                                            </tbody>
+                                        <?php
+                                        } else { ?>
+                                            <div class="alert alert-danger m-0">No record found!</div>
+                                        <?php
+                                        }
+                                        ?>
                                     </table>
                                 </div>
                             </div>
