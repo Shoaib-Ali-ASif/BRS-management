@@ -1,11 +1,9 @@
 <?php require_once('./database/connection.php') ?>
 <?php
 
-$error = $id = $title = $image  = $description = $author = "";
+$error = $title = $image  = $description = $author = "";
 
 if (isset($_POST['submit'])) {
-    $id = htmlspecialchars($_POST['id']);
-    $image = htmlspecialchars($_POST['img']);
     $title = htmlspecialchars($_POST['title']);
     $description = htmlspecialchars($_POST['description']);
     $author = htmlspecialchars($_POST['author']);
@@ -17,7 +15,7 @@ if (isset($_POST['submit'])) {
     } elseif (empty($description)) {
         $error = "Enter book description!";
     } else { {
-            $sql = "INSERT INTO `books`(`id`, `title`, `description`, `author`, `img`) VALUES ('$id','$title','$description','$author','$image')";
+            $sql = "INSERT INTO `books`(`title`, `description`, `author`, `img`) VALUES ('$title','$description','$author','$image')";
             $is_created = $conn->query($sql);
             if ($is_created) {
                 $success = 'SuccessFully Added!';
