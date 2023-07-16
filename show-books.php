@@ -58,9 +58,9 @@ $books = $result->fetch_all(MYSQLI_ASSOC);
                                                         <td><?php echo $book['author']; ?></td>
 
                                                         <td>
-                                                            <a href="./read-more.php" class="btn btn-secondary">Read-More</a>
-                                                            <a href="./edit-book.php" class="btn btn-primary">Edit</a>
-                                                            <a href="./delete-book.php" class="btn btn-danger">Delete</a>
+                                                            <a href="./read-more.php?id=<?php echo $book['id']; ?>" class="btn btn-secondary">Read-More</a>
+                                                            <a href="./edit-book.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="./delete-book.php?id=<?php echo $book['id']; ?>" class="btn btn-danger">Delete</a>
                                                         </td>
                                                     </tr>
                                                 <?php
