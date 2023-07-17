@@ -2,9 +2,9 @@
 
 
 <?php
-$sql = "SELECT * FROM `books`";
+$sql = "SELECT  FROM `books`";
 $result = $conn->query($sql);
-$books = $result->fetch_all(MYSQLI_ASSOC);
+$book = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 
@@ -39,15 +39,15 @@ $books = $result->fetch_all(MYSQLI_ASSOC);
                                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $id; ?>" method="post">
                                         <h1>Title:</h1>
                                         <br>
-                                        <h5><?php echo $books['title']; ?></h5>
+                                        <h5><?php echo $book['title']; ?></h5>
                                         <br>
                                         <h1>Author:</h1>
                                         <br>
-                                        <h5><?php echo $books['author']; ?></h5>
+                                        <h5><?php echo $book['author']; ?></h5>
                                         <br>
                                         <h1>Description:</h1>
                                         <br>
-                                        <h5><?php echo $books['description']; ?></h5>
+                                        <h5><?php echo $book['description']; ?></h5>
                                     
                                     </form>
                                 </div>
