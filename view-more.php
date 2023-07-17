@@ -36,26 +36,20 @@ $books = $result->fetch_all(MYSQLI_ASSOC);
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-
-
-                                    <?php
-
-                                    foreach ($books as $book) { ?>
+                                <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $id; ?>" method="post">
                                         <h1>Title:</h1>
                                         <br>
-                                        <h5><?php echo $book['title']; ?></h5>
+                                        <h5><?php echo $books['title']; ?></h5>
                                         <br>
                                         <h1>Author:</h1>
                                         <br>
-                                        <h5><?php echo $book['author']; ?></h5>
+                                        <h5><?php echo $books['author']; ?></h5>
                                         <br>
                                         <h1>Description:</h1>
                                         <br>
-                                        <h5><?php echo $book['description']; ?></h5>
-                                    <?php
-                                    }
-                                    ?>
-
+                                        <h5><?php echo $books['description']; ?></h5>
+                                    
+                                    </form>
                                 </div>
                             </div>
                         </div>
