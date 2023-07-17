@@ -37,28 +37,21 @@ $books = $result->fetch_all(MYSQLI_ASSOC);
                             <div class="card">
                                 <div class="card-body">
 
-                                    <?php
-                                    if (count($books) > 0) { ?>
-                                        <?php
 
-                                        foreach ($books as $book) { ?>
-                                            <h1>Title:</h1> 
-                                            <br>
-                                            <h5><?php echo $book['title']; ?></h5>
-                                            <br>
-                                            <h1>Author:</h1>
-                                            <br>
-                                            <h5><?php echo $book['author']; ?></h5>
-                                            <br>
-                                            <h1>Description:</h1>
-                                            <br>
-                                            <h5><?php echo $book['description']; ?></h5>
-                                        <?php
-                                        }
-                                        ?>
                                     <?php
-                                    } else { ?>
-                                        <div class="alert alert-danger m-0">No record found!</div>
+
+                                    foreach ($books as $book) { ?>
+                                        <h1>Title:</h1>
+                                        <br>
+                                        <h5><?php echo $book['title']; ?></h5>
+                                        <br>
+                                        <h1>Author:</h1>
+                                        <br>
+                                        <h5><?php echo $book['author']; ?></h5>
+                                        <br>
+                                        <h1>Description:</h1>
+                                        <br>
+                                        <h5><?php echo $book['description']; ?></h5>
                                     <?php
                                     }
                                     ?>

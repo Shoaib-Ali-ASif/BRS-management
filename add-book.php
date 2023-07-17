@@ -6,7 +6,6 @@ $error = $title = $description = $author = "";
 
 if (isset($_POST['submit'])) {
     $title = htmlspecialchars($_POST['title']);
-    $description = htmlspecialchars($_POST['description']);
     $author = htmlspecialchars($_POST['author']);
     
 
@@ -14,10 +13,8 @@ if (isset($_POST['submit'])) {
         $error = "Enter Book title!";
     } elseif (empty($author)) {
         $error = "Enter author name!";
-    } elseif (empty($description)) {
-        $error = "Enter book description!";
     } else { {
-            $sql = "INSERT INTO `books`(`title`, `description`, `author`, `img`) VALUES ('$title','$description','$author','$img')";
+            $sql = "INSERT INTO `books`(`title`, `author`) VALUES ('$title','$author')";
             $is_created = $conn->query($sql);
             if ($is_created) {
                 $success = 'SuccessFully Added!';
@@ -62,14 +59,6 @@ if (isset($_POST['submit'])) {
 
                         <div class="mb-3">
                             <input type="text" class="form-control" name="author" id="author" placeholder="Author Name:" value="<?php echo $author; ?>">
-                        </div>
-
-                        <div class="mb-3">
-                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Book Description"><?php echo $description; ?></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="file" name="image" id="image" placeholder="Book image">
                         </div>
 
                         <div>
