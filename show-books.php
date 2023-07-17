@@ -42,7 +42,6 @@ $books = $result->fetch_all(MYSQLI_ASSOC);
                                             <thead>
                                                 <tr>
                                                     <th>Sr. No.</th>
-                                                    <th>Image</th>
                                                     <th>Title</th>
                                                     <th>Author</th>
                                                     <th>Action</th>
@@ -55,12 +54,11 @@ $books = $result->fetch_all(MYSQLI_ASSOC);
 
                                                     <tr>
                                                         <td><?php echo $sr++; ?></td>
-                                                        <td><?php echo $book['img']; ?></td>
                                                         <td><?php echo $book['title']; ?></td>
                                                         <td><?php echo $book['author']; ?></td>
 
                                                         <td>
-                                                            <a href="./read-more.php?id=<?php echo $book['id']; ?>" class="btn btn-secondary">Read-More</a>
+                                                            <a href="./view-more.php?id=<?php echo $book['id']; ?>" class="btn btn-secondary">Read-More</a>
                                                             <a href="./edit-book.php?id=<?php echo $book['id']; ?>" class="btn btn-primary">Edit</a>
                                                             <a href="./delete-book.php?id=<?php echo $book['id']; ?>" class="btn btn-danger">Delete</a>
                                                         </td>

@@ -3,9 +3,11 @@
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
+} else {
+    header('location: ./show-books.php');
 }
 
-$sql = "SELECT * FROM `books` WHERE `books`.`id` = $id";
+$sql = "SELECT * FROM `books` WHERE `id` = $id";
 $result = $conn->query($sql);
 $book = $result->fetch_assoc();
 
@@ -18,6 +20,7 @@ if (isset($_POST['submit'])) {
     $title = htmlspecialchars($_POST['title']);
     $author = htmlspecialchars($_POST['author']);
     $description = htmlspecialchars($_POST['description']);
+    $img = htmlspecialchars($_POST['img']);
 
     if (empty($title)) {
         $error = "Enter Book title!";
@@ -26,7 +29,7 @@ if (isset($_POST['submit'])) {
     } elseif (empty($description)) {
         $error = "Enter description!";
     } else {
-        $sql = "UPDATE `books` SET `title`='$title',`description`='$description',`author`='$author',`img`='$image' WHERE  `id` = $id";
+        $sql = "UPDATE `books` SET `title` = '$title',`description` = '$description',`author` = '$author',`img` = '$img' WHERE  `id` = $id";
         if ($conn->query($sql)) {
             $success = "SuccessFully updated!";
         } else {
@@ -61,7 +64,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <?php require_once('./includes/alerts.php'); ?>
 
-                    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data" class="mx-5">
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id=<?php echo $id; ?>" method="post">
 
                         <div class="mb-3">
                             <input type="text" class="form-control" name="title" id="title" placeholder="Book Title:" value="<?php echo $title; ?>">
