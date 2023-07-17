@@ -12,6 +12,7 @@ $book = $result->fetch_assoc();
 $title = $book['title'];
 $author = $book['author'];
 $description = $book['description'];
+$img = $book['img'];
 
 if (isset($_POST['submit'])) {
     $title = htmlspecialchars($_POST['title']);
@@ -22,11 +23,10 @@ if (isset($_POST['submit'])) {
         $error = "Enter Book title!";
     } elseif (empty($author)) {
         $error = "Enter author name!";
-    } 
-    elseif (empty($description)) {
+    } elseif (empty($description)) {
         $error = "Enter description!";
     } else {
-        $sql = "UPDATE `books` SET `title` = '$title', `author` = '$author', `description` = `$description` WHERE `id` = $id";
+        $sql = "UPDATE `books` SET `title`='$title',`description`='$description',`author`='$author',`img`='$image' WHERE  `id` = $id";
         if ($conn->query($sql)) {
             $success = "SuccessFully updated!";
         } else {
@@ -72,7 +72,8 @@ if (isset($_POST['submit'])) {
                         </div>
 
                         <div class="mb-3">
-                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Book Description" value="<?php echo $description; ?>" ></textarea>
+                            <textarea class="form-control" name="description" id="description" rows="3" placeholder="Book Description"><?php echo $description; ?></textarea>
+
                         </div>
 
                         <div class="mb-3">
