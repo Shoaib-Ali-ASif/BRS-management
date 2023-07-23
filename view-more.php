@@ -2,7 +2,7 @@
 
 
 <?php
-$sql = "SELECT  FROM `books`";
+$sql = "SELECT `title`, `description`, `author` FROM `books`";
 $result = $conn->query($sql);
 $book = $result->fetch_all(MYSQLI_ASSOC);
 ?>
